@@ -1,0 +1,173 @@
+/* ============================================
+   ASSIGNMENTS-PAGE.CSS
+   ============================================ */
+
+/* ============================================
+   ASSIGNMENT FILTER — CSS-only radio-based filtering
+   ============================================ */
+
+/* Active tab styling based on which radio is checked */
+#assign-filter-all:checked ~ .container label[for="assign-filter-all"],
+#assign-filter-pending:checked ~ .container label[for="assign-filter-pending"],
+#assign-filter-submitted:checked ~ .container label[for="assign-filter-submitted"],
+#assign-filter-graded:checked ~ .container label[for="assign-filter-graded"] {
+    background: #6c3ce9;
+    color: #fff;
+    border-color: #6c3ce9;
+    box-shadow: 0 4px 14px rgba(108, 60, 233, 0.3);
+}
+
+/* Hide non-matching assignment cards when a status filter is selected */
+#assign-filter-pending:checked ~ .container .assignment-card:not([data-status="pending"]),
+#assign-filter-submitted:checked ~ .container .assignment-card:not([data-status="submitted"]),
+#assign-filter-graded:checked ~ .container .assignment-card:not([data-status="graded"]) {
+    display: none;
+}
+
+/* Filter tabs container — radio-based filtering */
+.assignments-filter-radios {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.assignments-filter-radios .filter-tab {
+    padding: 10px 22px;
+    border-radius: 12px;
+    border: 1.5px solid #252548;
+    background: #181830;
+    color: #9ca3b8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.assignments-filter-radios .filter-tab:hover {
+    border-color: #6c3ce9;
+    color: #6c3ce9;
+    background: rgba(108, 60, 233, 0.15);
+}
+
+.assignments-filter-radios .filter-tab.active {
+    background: #6c3ce9;
+    color: #fff;
+    border-color: #6c3ce9;
+    box-shadow: 0 4px 14px rgba(108, 60, 233, 0.3);
+}
+
+/* Assignment list */
+.assignments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Assignment Card */
+.assignment-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 26px;
+    background: #181830;
+    border-radius: 22px;
+    border: 1px solid #252548;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.assignment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.assignment-card.completed {
+    opacity: 0.75;
+}
+
+.assignment-card.completed:hover {
+    opacity: 1;
+}
+
+.assignment-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.assignment-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.assignment-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.assignment-header h4 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.assignment-info p {
+    font-size: 0.82rem;
+    color: #6b7290;
+    line-height: 1.5;
+}
+
+.assignment-meta {
+    display: flex;
+    gap: 18px;
+    font-size: 0.78rem;
+    color: #9ca3b8;
+    flex-wrap: wrap;
+}
+
+.assignment-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.assignment-meta i {
+    font-size: 0.7rem;
+    color: #6c3ce9;
+}
+
+.assignment-action {
+    flex-shrink: 0;
+    padding-top: 4px;
+}
+
+/* --- Mobile phones (768px and below) --- */
+/* on phones, assignment cards stack vertically and button takes full width */
+@media (max-width: 768px) {
+
+    /* stack assignment card content vertically on phones */
+    .assignment-card {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* make the action button section full width on phones */
+    .assignment-action {
+        width: 100%;
+    }
+
+    /* make the submit/view button full width on phones */
+    .assignment-action .btn {
+        width: 100%;
+    }
+}

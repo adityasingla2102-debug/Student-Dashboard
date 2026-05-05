@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduDash — Student Dashboard</title>
+    <meta name="description" content="Professional student dashboard for tracking courses, progress, and learning activities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/fd15269903.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Hidden controls for CSS-only interactivity -->
+    <input type="checkbox" id="sidebar-check" class="css-toggle-input">
+
+    <!-- Mobile Menu Label -->
+    <label for="sidebar-check" class="mobile-sidebar-label">
+        <i class="fa-solid fa-bars icon-bars"></i>
+        <i class="fa-solid fa-xmark icon-close"></i>
+    </label>
+    <!-- Sidebar Overlay (click to close) -->
+    <label for="sidebar-check" class="sidebar-overlay-label"></label>
+
+    <div class="container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="logo-text">Edu<span>Dash</span></div>
+            </div>
+
+            <div class="sidebar-section-label">Main Menu</div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="active" title="Dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" title="Courses">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>My Courses</span>
+                    <span class="nav-badge">5</span>
+                </a>
+                <a href="books.html" title="Books">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Bookshop</span>
+                </a>
+                <a href="schedule.html" title="Schedule">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="assignments.html" title="Assignments">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Assignments</span>
+                    <span class="nav-badge">3</span>
+                </a>
+                <a href="profile.html" title="Profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <h1>Welcome back, Arka 👋</h1>
+                    <p>Let's continue your learning journey</p>
+                </div>
+                <form class="header-search-form" action="courses.html" method="get">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="search" placeholder="Search courses, lessons…" autocomplete="off">
+                    <div class="search-suggestions">
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-atom"></i><span>Quantum Physics</span><span class="suggestion-sub">Course</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-flask"></i><span>Organic Chemistry</span><span class="suggestion-sub">Course</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-palette"></i><span>Color Theory &amp; Design</span><span class="suggestion-sub">Course</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-code"></i><span>JavaScript Essentials</span><span class="suggestion-sub">Course</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-brain"></i><span>Machine Learning Intro</span><span class="suggestion-sub">Course</span></a>
+                        <a href="schedule.html" class="search-suggestion-item"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span><span class="suggestion-sub">Page</span></a>
+                        <a href="assignments.html" class="search-suggestion-item"><i class="fa-solid fa-clipboard-list"></i><span>Assignments</span><span class="suggestion-sub">Page</span></a>
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-book"></i><span>Bookshop</span><span class="suggestion-sub">Page</span></a>
+                        <a href="profile.html" class="search-suggestion-item"><i class="fa-solid fa-user"></i><span>Profile</span><span class="suggestion-sub">Page</span></a>
+                    </div>
+                </form>
+                <div class="header-actions">
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Notifications" type="button">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Notifications <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon rose"><i class="fa-solid fa-clock"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Assignment Due Soon</h4>
+                                        <p>Chemistry Lab Report is due in 2 days. Don't forget to submit!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-star"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Grade Posted</h4>
+                                        <p>You scored 92% on Color Palette Research. Great work!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">5h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-book-open"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>New Course Material</h4>
+                                        <p>Chapter 8 slides for Quantum Physics have been uploaded.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon gold"><i class="fa-solid fa-trophy"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Achievement Unlocked!</h4>
+                                        <p>You've earned the "7-Day Streak" badge. Keep it up!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Messages" type="button">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Messages & Circulars <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon sky"><i class="fa-solid fa-bullhorn"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Mid-Term Exam Schedule</h4>
+                                        <p>Mid-term exams will be held from March 20-25. Check your schedule for details.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon orange"><i class="fa-solid fa-book"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Library Notice</h4>
+                                        <p>New books on Machine Learning are now available in the central library.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">3h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-user-tie"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Message from Dr. Smith</h4>
+                                        <p>Please review the updated grading rubric for the Physics Quiz next week.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">6h ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-calendar-check"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Campus Holiday Notice</h4>
+                                        <p>The campus will be closed on March 14 for Holi celebrations. Classes resume March 15.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="profile.html" class="header-avatar" title="Profile">AM</a>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <!-- Stats Overview Row -->
+                <div class="stats-row animate-fadeInUp">
+                    <div class="stat-card">
+                        <div class="stat-card-icon" style="background: rgba(108, 60, 233, 0.1); color: #6c3ce9;">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <span class="stat-card-value" data-count="24">24</span>
+                            <span class="stat-card-label">Enrolled Courses</span>
+                        </div>
+                        <div class="stat-card-trend up">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +4
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <span class="stat-card-value" data-count="156">156</span>
+                            <span class="stat-card-label">Hours Learned</span>
+                        </div>
+                        <div class="stat-card-trend up">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +12
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <span class="stat-card-value" data-count="18">18</span>
+                            <span class="stat-card-label">Certificates</span>
+                        </div>
+                        <div class="stat-card-trend up">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +2
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon" style="background: rgba(244, 63, 142, 0.1); color: #f43f8e;">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <span class="stat-card-value" data-count="2400">2,400</span>
+                            <span class="stat-card-label">XP Points</span>
+                        </div>
+                        <div class="stat-card-trend up">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +240
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- LEFT COLUMN -->
+                    <div class="dash-left">
+                        <!-- Today's Course -->
+                        <div class="card animate-fadeInUp animate-delay-1">
+                            <div class="section-title">
+                                <h2>Today's Courses</h2>
+                                <a href="courses.html" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="course-cards">
+                                <!-- Course Card 1 -->
+                                <div class="course-card">
+                                    <div class="course-progress-ring">
+                                        <svg viewBox="0 0 80 80">
+                                            <circle class="ring-bg" cx="40" cy="40" r="34" />
+                                            <circle class="ring-fill ring-emerald" cx="40" cy="40" r="34"
+                                                stroke-dasharray="213.6" stroke-dashoffset="44.9" />
+                                        </svg>
+                                        <span class="ring-emoji">🧬</span>
+                                    </div>
+                                    <div class="course-card-body">
+                                        <div class="course-card-top">
+                                            <h4>Quantum Physics</h4>
+                                            <span class="badge badge-emerald">79%</span>
+                                        </div>
+                                        <div class="course-meta stacked">
+                                            <span><i class="fa-solid fa-layer-group"></i> 12 Lessons</span>
+                                            <span><i class="fa-solid fa-clock"></i> 50 Minutes</span>
+                                            <span><i class="fa-solid fa-users"></i> 312 Students</span>
+                                        </div>
+                                        <div class="course-progress-bar">
+                                            <div class="progress-track">
+                                                <div class="progress-fill emerald" style="width: 79%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="course-card-actions">
+                                            <a href="courses.html" class="btn btn-outline btn-sm">Skip</a>
+                                            <a href="courses.html" class="btn btn-primary btn-sm">Continue</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Course Card 2 -->
+                                <div class="course-card">
+                                    <div class="course-progress-ring">
+                                        <svg viewBox="0 0 80 80">
+                                            <circle class="ring-bg" cx="40" cy="40" r="34" />
+                                            <circle class="ring-fill ring-purple" cx="40" cy="40" r="34"
+                                                stroke-dasharray="213.6" stroke-dashoffset="74.8" />
+                                        </svg>
+                                        <span class="ring-emoji">🧪</span>
+                                    </div>
+                                    <div class="course-card-body">
+                                        <div class="course-card-top">
+                                            <h4>Organic Chemistry</h4>
+                                            <span class="badge badge-purple">65%</span>
+                                        </div>
+                                        <div class="course-meta stacked">
+                                            <span><i class="fa-solid fa-layer-group"></i> 10 Lessons</span>
+                                            <span><i class="fa-solid fa-clock"></i> 45 Minutes</span>
+                                            <span><i class="fa-solid fa-users"></i> 256 Students</span>
+                                        </div>
+                                        <div class="course-progress-bar">
+                                            <div class="progress-track">
+                                                <div class="progress-fill purple" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="course-card-actions">
+                                            <a href="courses.html" class="btn btn-outline btn-sm">Skip</a>
+                                            <a href="courses.html" class="btn btn-primary btn-sm">Continue</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Course Card 3 -->
+                                <div class="course-card">
+                                    <div class="course-progress-ring">
+                                        <svg viewBox="0 0 80 80">
+                                            <circle class="ring-bg" cx="40" cy="40" r="34" />
+                                            <circle class="ring-fill ring-gold" cx="40" cy="40" r="34"
+                                                stroke-dasharray="213.6" stroke-dashoffset="106.8" />
+                                        </svg>
+                                        <span class="ring-emoji">🎨</span>
+                                    </div>
+                                    <div class="course-card-body">
+                                        <div class="course-card-top">
+                                            <h4>Color Theory &amp; Design</h4>
+                                            <span class="badge badge-gold">50%</span>
+                                        </div>
+                                        <div class="course-meta stacked">
+                                            <span><i class="fa-solid fa-layer-group"></i> 8 Lessons</span>
+                                            <span><i class="fa-solid fa-clock"></i> 35 Minutes</span>
+                                            <span><i class="fa-solid fa-users"></i> 189 Students</span>
+                                        </div>
+                                        <div class="course-progress-bar">
+                                            <div class="progress-track">
+                                                <div class="progress-fill gold" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="course-card-actions">
+                                            <a href="courses.html" class="btn btn-outline btn-sm">Skip</a>
+                                            <a href="courses.html" class="btn btn-primary btn-sm">Continue</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="dash-right">
+                        <!-- Quick Actions -->
+                        <div class="quick-actions animate-fadeInUp animate-delay-2">
+                            <a href="schedule.html" class="quick-action-card consultation">
+                                <div class="qa-icon"><i class="fa-solid fa-headset"></i></div>
+                                <h4>Consultation</h4>
+                                <p>Book a session with your mentor</p>
+                                <span class="qa-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                            <a href="courses.html" class="quick-action-card target">
+                                <div class="qa-icon"><i class="fa-solid fa-bullseye"></i></div>
+                                <h4>Set Target</h4>
+                                <p>Plan your study timeline</p>
+                                <span class="qa-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+
+                        <!-- Learning Activity Chart -->
+                        <div class="card animate-fadeInUp animate-delay-3">
+                            <div class="section-title">
+                                <h2>Learning Activity</h2>
+                                <div class="chart-legend">
+                                    <span class="legend-item"><span class="legend-dot purple"></span> Materials</span>
+                                    <span class="legend-item"><span class="legend-dot pink"></span> Exams</span>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <svg viewBox="0 0 680 280" width="100%" preserveAspectRatio="xMinYMid meet">
+                                    <!-- Grid lines -->
+                                    <line x1="60" y1="40" x2="660" y2="40" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="4"/>
+                                    <line x1="60" y1="90" x2="660" y2="90" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="4"/>
+                                    <line x1="60" y1="140" x2="660" y2="140" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="4"/>
+                                    <line x1="60" y1="190" x2="660" y2="190" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="4"/>
+                                    <line x1="60" y1="240" x2="660" y2="240" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+
+                                    <!-- Y-axis labels -->
+                                    <text x="20" y="44" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter">100</text>
+                                    <text x="28" y="94" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter">80</text>
+                                    <text x="28" y="144" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter">60</text>
+                                    <text x="28" y="194" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter">40</text>
+                                    <text x="28" y="244" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter">20</text>
+
+                                    <!-- X-axis labels -->
+                                    <text x="90" y="268" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter" text-anchor="middle">Aug</text>
+                                    <text x="190" y="268" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter" text-anchor="middle">Sep</text>
+                                    <text x="290" y="268" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter" text-anchor="middle">Oct</text>
+                                    <text x="390" y="268" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter" text-anchor="middle">Nov</text>
+                                    <text x="490" y="268" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter" text-anchor="middle">Dec</text>
+                                    <text x="590" y="268" font-size="11" fill="rgba(255, 255, 255, 0.5)" font-family="Inter" text-anchor="middle">Jan</text>
+
+                                    <!-- Gradient fills -->
+                                    <defs>
+                                        <linearGradient id="purpleGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#6c3ce9" stop-opacity="0.25"/>
+                                            <stop offset="100%" stop-color="#6c3ce9" stop-opacity="0.01"/>
+                                        </linearGradient>
+                                        <linearGradient id="pinkGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#f43f8e" stop-opacity="0.2"/>
+                                            <stop offset="100%" stop-color="#f43f8e" stop-opacity="0.01"/>
+                                        </linearGradient>
+                                    </defs>
+
+                                    <!-- Area fills -->
+                                    <path d="M90 160 C150 140,200 180,280 130 S400 170,470 90 S560 80,640 120 L640 240 L90 240 Z"
+                                        fill="url(#purpleGrad)" />
+                                    <path d="M90 130 C150 145,200 100,280 160 S400 180,470 170 S560 190,640 210 L640 240 L90 240 Z"
+                                        fill="url(#pinkGrad)" />
+
+                                    <!-- Lines -->
+                                    <path d="M90 160 C150 140,200 180,280 130 S400 170,470 90 S560 80,640 120"
+                                        fill="none" stroke="#6c3ce9" stroke-width="2.5" stroke-linecap="round" />
+                                    <path d="M90 130 C150 145,200 100,280 160 S400 180,470 170 S560 190,640 210"
+                                        fill="none" stroke="#f43f8e" stroke-width="2.5" stroke-linecap="round" />
+
+                                    <!-- Data points -->
+                                    <circle cx="90" cy="160" r="4" fill="#6c3ce9" />
+                                    <circle cx="280" cy="130" r="4" fill="#6c3ce9" />
+                                    <circle cx="470" cy="90" r="4" fill="#6c3ce9" />
+                                    <circle cx="640" cy="120" r="4" fill="#6c3ce9" />
+                                    <circle cx="90" cy="130" r="4" fill="#f43f8e" />
+                                    <circle cx="280" cy="160" r="4" fill="#f43f8e" />
+                                    <circle cx="470" cy="170" r="4" fill="#f43f8e" />
+                                    <circle cx="640" cy="210" r="4" fill="#f43f8e" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Deadlines -->
+                        <div class="card animate-fadeInUp animate-delay-5">
+                            <div class="section-title">
+                                <h2>Upcoming Deadlines</h2>
+                                <a href="assignments.html" class="view-all">See all</a>
+                            </div>
+                            <div class="deadlines-list">
+                                <div class="deadline-item">
+                                    <div class="deadline-icon" style="background: rgba(108, 60, 233, 0.1); color: #6c3ce9;">
+                                        <i class="fa-solid fa-flask"></i>
+                                    </div>
+                                    <div class="deadline-info">
+                                        <h4>Chemistry Lab Report</h4>
+                                        <span>Due in 2 days</span>
+                                    </div>
+                                    <span class="badge badge-rose">Urgent</span>
+                                </div>
+                                <div class="deadline-item">
+                                    <div class="deadline-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                        <i class="fa-solid fa-code"></i>
+                                    </div>
+                                    <div class="deadline-info">
+                                        <h4>JavaScript Project</h4>
+                                        <span>Due in 5 days</span>
+                                    </div>
+                                    <span class="badge badge-gold">Pending</span>
+                                </div>
+                                <div class="deadline-item">
+                                    <div class="deadline-icon" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9;">
+                                        <i class="fa-solid fa-atom"></i>
+                                    </div>
+                                    <div class="deadline-info">
+                                        <h4>Physics Quiz</h4>
+                                        <span>Due in 1 week</span>
+                                    </div>
+                                    <span class="badge badge-sky">Upcoming</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="search.js"></script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

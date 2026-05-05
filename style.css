@@ -1,0 +1,909 @@
+/* ============================================
+   STYLE.CSS - Dashboard Page (index.html)
+   This file styles the main Dashboard page
+   which is the first page users see after login.
+   It has stats cards, course list, chart,
+   profile card, XP section, and deadlines.
+   ============================================ */
+
+/* ============================================
+   STATS ROW - Top of Dashboard page
+   Shows 4 summary cards: Total Courses,
+   Hours Studied, Assignments, and GPA
+   ============================================ */
+
+/* stats-row: grid container that holds the 4 stat cards in a row at the top of the dashboard */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+/* stat-card: each individual stat box (Total Courses, Hours Studied, etc.) at the top of dashboard */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 26px 26px;
+    background: #181830;
+    border-radius: 22px;
+    border: 1px solid #252548;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: auto;
+}
+
+/* decorative circle at the top-right corner of each stat card */
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(at 40% 20%, hsla(263, 79%, 64%, 0.08) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(330, 85%, 60%, 0.06) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(210, 90%, 60%, 0.05) 0px, transparent 50%);
+    opacity: 0.5;
+    transform: translate(25%, -25%);
+}
+
+/* hover effect: stat card lifts up slightly when mouse hovers over it */
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* stat-card-icon: the colored icon box on the left side of each stat card */
+.stat-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* stat-card-info: container for the number and label text in each stat card */
+.stat-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* stat-card-value: the big number shown in each stat card (like "5" for courses or "3.8" for GPA) */
+.stat-card-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #f1f1f6;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+/* stat-card-label: the small text below the number in each stat card (like "Total Courses") */
+.stat-card-label {
+    font-size: 0.85rem;
+    color: #6b7290;
+    font-weight: 500;
+}
+
+/* stat-card-trend: the green/red percentage badge showing increase or decrease in each stat card */
+.stat-card-trend {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* green trend badge showing an increase (like "+12%") */
+.stat-card-trend.up {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+/* red trend badge showing a decrease (like "-3%") */
+.stat-card-trend.down {
+    background: rgba(244, 63, 94, 0.1);
+    color: #f43f5e;
+}
+
+/* ============================================
+   DASHBOARD GRID - Main content area below
+   the stats row. Split into left column
+   (courses, chart) and right column
+   (profile card, XP, quick actions, deadlines)
+   ============================================ */
+
+/* dashboard-grid: the two-column layout below the stat cards on the dashboard page */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+/* dash-left: left column of the dashboard grid, contains course list and learning activity chart */
+.dash-left {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* makes each card in the left column stretch to fill available space */
+.dash-left > .card {
+    flex: 1;
+}
+
+/* dash-right: right column of the dashboard grid, contains profile card, XP, actions, and deadlines */
+.dash-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ============================================
+   COURSE CARDS - Dashboard left column
+   Shows a list of enrolled courses with
+   progress rings, course name, and meta info
+   ============================================ */
+
+/* course-cards: container that holds all course cards stacked vertically on the dashboard */
+.course-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* course-card: each individual course row on the dashboard with progress ring, title, and buttons */
+.course-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 24px;
+    background: #1e1e3a;
+    border-radius: 18px;
+    border: 1px solid #252548;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* hover effect: course card lifts up and gets a purple border */
+.course-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-color: #6c3ce9;
+}
+
+/* course-progress-ring: the circular SVG progress indicator on the left side of each course card */
+.course-progress-ring {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+/* SVG element for the circular progress ring */
+.course-progress-ring svg {
+    transform: rotate(-90deg);
+    width: 70px;
+    height: 70px;
+}
+
+/* ring-bg: the gray background track of the circular progress ring */
+.ring-bg {
+    fill: none;
+    stroke: #252548;
+    stroke-width: 6;
+}
+
+/* ring-fill: the colored fill of the circular progress ring showing completion percentage */
+.ring-fill {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-out;
+}
+
+/* different colors for the progress ring based on the course */
+.ring-emerald { stroke: #10b981; }
+.ring-purple { stroke: #6c3ce9; }
+.ring-gold { stroke: #f59e0b; }
+.ring-pink { stroke: #f43f8e; }
+
+/* ring-emoji: the emoji icon displayed in the center of the progress ring */
+.ring-emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+/* course-card-body: the text content area of each course card (title, meta info, progress bar) */
+.course-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+/* course-card-top: top row of the course card body with course name and status badge */
+.course-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* course name heading in the course card */
+.course-card-top h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f1f1f6;
+}
+
+/* course-meta: row of small details like "12 Lessons", "8h 30m", instructor name */
+.course-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 0.88rem;
+    color: #6b7290;
+    flex-wrap: wrap;
+}
+
+/* stacked version of course-meta (details shown vertically instead of in a row) */
+.course-meta.stacked {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.88rem;
+}
+
+/* each meta item (like "12 Lessons") inside the course card */
+.course-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* small purple icons next to each meta item in the course card */
+.course-meta i {
+    font-size: 0.78rem;
+    color: #6c3ce9;
+    width: 16px;
+    text-align: center;
+}
+
+/* course-progress-bar: the horizontal progress bar inside each course card on the dashboard */
+.course-progress-bar {
+    width: 100%;
+}
+
+/* progress-track: the gray background track of any progress bar (used in dashboard and courses page) */
+.progress-track {
+    width: 100%;
+    height: 6px;
+    background: #252548;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* progress-fill: the colored fill inside the progress bar showing how much is completed */
+.progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-out;
+}
+
+/* green progress fill color */
+.progress-fill.emerald {
+    background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+/* purple progress fill color */
+.progress-fill.purple {
+    background: linear-gradient(90deg, #6c3ce9, #8b5cf6);
+}
+
+/* gold/yellow progress fill color */
+.progress-fill.gold {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+/* pink progress fill color */
+.progress-fill.pink {
+    background: linear-gradient(90deg, #f43f8e, #ec4899);
+}
+
+/* course-card-actions: the Continue/Review buttons at the bottom of each course card on dashboard */
+.course-card-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+/* makes each button inside course card actions take equal width */
+.course-card-actions .btn {
+    flex: 1;
+}
+
+/* ============================================
+   LEARNING ACTIVITY CHART - Dashboard left column
+   Shows a bar chart with weekly study hours
+   and assignment completion data
+   ============================================ */
+
+/* chart-legend: the legend row above the chart showing "Study Hours" and "Assignments" labels */
+.chart-legend {
+    display: flex;
+    gap: 18px;
+    font-size: 0.88rem;
+    color: #9ca3b8;
+}
+
+/* legend-item: each individual legend entry (dot + label) */
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* legend-dot: the small colored circle in the chart legend */
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* purple dot for "Study Hours" in the chart legend */
+.legend-dot.purple { background: #6c3ce9; }
+/* pink dot for "Assignments" in the chart legend */
+.legend-dot.pink { background: #f43f8e; }
+
+/* chart-container: the dark box that holds the SVG bar chart on the dashboard */
+.chart-container {
+    background: #1e1e3a;
+    border-radius: 14px;
+    padding: 20px 12px;
+    border: 1px solid #252548;
+    margin-top: 4px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* ============================================
+   PROFILE CARD - Dashboard right column
+   Shows user avatar, name, and quick stats
+   (Courses, Rank, Points). Located at the
+   top of the right column on the dashboard.
+   ============================================ */
+
+/* profile-card: the user profile card in the dashboard right column */
+.profile-card {
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* profile-banner: the purple gradient banner at the top of the profile card */
+.profile-banner {
+    height: 120px;
+    background: linear-gradient(135deg, #8b5cf6, #6c3ce9, #4f25c4);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* decorative cross pattern overlay on the profile banner */
+.profile-banner-pattern {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* profile-avatar: the user initials icon that overlaps the banner and body of the profile card */
+.profile-card .profile-avatar {
+    width: 72px;
+    height: 72px;
+    background: #181830;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #6c3ce9;
+    margin: -36px auto 0;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 4px solid #ffffff;
+    z-index: 1;
+}
+
+/* profile-info: the user name and role text below the avatar in the profile card */
+.profile-card .profile-info {
+    padding: 14px 20px 0;
+}
+
+/* user name heading in the profile card */
+.profile-card .profile-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+/* user role text (like "Computer Science") below the name */
+.profile-card .profile-info p {
+    font-size: 0.78rem;
+    color: #6b7290;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* small pink icon next to the role text */
+.profile-card .profile-info p i {
+    color: #f43f8e;
+    font-size: 0.7rem;
+}
+
+/* profile-stats-row: the row of 3 stats (Courses, Rank, Points) at the bottom of the profile card */
+.profile-stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 0;
+}
+
+/* profile-stat: each individual stat column (Courses, Rank, or Points) in the profile card */
+.profile-stat {
+    flex: 1;
+    text-align: center;
+    padding: 0 12px;
+}
+
+/* profile-stat-icon: the small colored icon above each stat number in the profile card */
+.profile-stat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-size: 15px;
+}
+
+/* purple book icon for the Courses stat */
+.profile-stat-icon.book {
+    background: rgba(108, 60, 233, 0.1);
+    color: #6c3ce9;
+}
+
+/* gold crown icon for the Rank stat */
+.profile-stat-icon.crown {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+/* pink star icon for the Points stat */
+.profile-stat-icon.star {
+    background: rgba(244, 63, 142, 0.1);
+    color: #f43f8e;
+}
+
+/* the big number in each profile stat (like "5" for courses) */
+.profile-stat h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #f1f1f6;
+    margin-bottom: 2px;
+}
+
+/* the label text below each stat number (like "Courses") */
+.profile-stat span {
+    font-size: 0.7rem;
+    color: #6b7290;
+    font-weight: 500;
+}
+
+/* vertical divider line between the 3 stats in the profile card */
+.profile-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: #252548;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   XP CARD - Dashboard right column
+   Shows user's experience points, level,
+   progress to next level, and action buttons.
+   Located below the profile card.
+   ============================================ */
+
+/* xp-card: the experience points card in the dashboard right column */
+.xp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* xp-card-top: top section of XP card with medal icon and XP number */
+.xp-card-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* xp-icon-box: the box that holds the medal/trophy image in the XP card */
+.xp-icon-box {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    background: #1e1e3a;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 6px;
+}
+
+/* medal image inside the XP icon box */
+.xp-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* xp-info: container for XP number and label text */
+.xp-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+/* xp-value: the large XP number (like "2,450 XP") */
+.xp-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* xp-label: small text below XP number (like "Experience Points") */
+.xp-label {
+    font-size: 0.75rem;
+    color: #6b7290;
+    font-weight: 500;
+}
+
+/* xp-progress: the progress bar section showing progress to next level */
+.xp-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+/* xp-next: small text like "450 XP to next level" below the XP progress bar */
+.xp-next {
+    font-size: 0.68rem;
+    color: #6b7290;
+}
+
+/* xp-card-actions: the buttons at the bottom of the XP card (like "View Achievements") */
+.xp-card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* makes each button in XP card actions take equal width */
+.xp-card-actions .btn {
+    flex: 1;
+}
+
+/* ============================================
+   QUICK ACTION CARDS - Dashboard right column
+   Two colorful shortcut cards (Book Consultation
+   and Set Target) shown in a 2-column grid
+   below the XP card
+   ============================================ */
+
+/* quick-actions: the 2-column grid that holds the quick action cards */
+.quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* removes default link styling when quick action card is wrapped in an anchor tag */
+a.quick-action-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* quick-action-card: each colorful shortcut card (Book Consultation, Set Target) */
+.quick-action-card {
+    padding: 22px;
+    border-radius: 18px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* decorative circle at top-right corner of quick action card */
+.quick-action-card::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* decorative circle at bottom-left corner of quick action card */
+.quick-action-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* hover effect: quick action card lifts up with shadow */
+.quick-action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* click effect: quick action card shrinks slightly when pressed */
+.quick-action-card:active {
+    transform: scale(0.98);
+}
+
+/* gold/orange gradient for the "Book Consultation" quick action card */
+.quick-action-card.consultation {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* purple gradient for the "Set Target" quick action card */
+.quick-action-card.target {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+/* qa-icon: the icon box inside each quick action card */
+.qa-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    backdrop-filter: blur(4px);
+}
+
+/* title text inside the quick action card */
+.quick-action-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* description text inside the quick action card */
+.quick-action-card p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+/* qa-arrow: the small arrow button at the bottom-right of each quick action card */
+.qa-arrow {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+/* hover effect: arrow slides to the right when hovering over the quick action card */
+.quick-action-card:hover .qa-arrow {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(3px);
+}
+
+/* ============================================
+   DEADLINES LIST - Dashboard right column
+   Shows upcoming assignment deadlines below
+   the quick action cards. Each item has an
+   icon, assignment name, and due date.
+   ============================================ */
+
+/* deadlines-list: container for all deadline items stacked vertically */
+.deadlines-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* deadline-item: each individual deadline row with icon, name, and due date */
+.deadline-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    background: #1e1e3a;
+    border-radius: 14px;
+    border: 1px solid #252548;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* hover effect: deadline item slides to the right and gets purple border */
+.deadline-item:hover {
+    transform: translateX(4px);
+    border-color: #6c3ce9;
+}
+
+/* deadline-icon: the colored icon box on the left of each deadline item */
+.deadline-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* deadline-info: the text section of each deadline item */
+.deadline-info {
+    flex: 1;
+    min-width: 0;
+}
+
+/* assignment name in each deadline item */
+.deadline-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+/* due date text in each deadline item (like "Due in 2 days") */
+.deadline-info span {
+    font-size: 0.82rem;
+    color: #6b7290;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   These media queries make the dashboard page
+   look good on tablets, phones, and small phones.
+   
+   How it works:
+   - On big screens (above 1024px): everything
+     shows normally in 2 columns
+   - On tablets (1024px or less): switches to
+     1 column, stat cards become 2 per row
+   - On phones (768px or less): smaller sizes,
+     course cards stack vertically
+   - On small phones (480px or less): stat cards
+     become 1 per row
+   ============================================ */
+
+/* --- Tablet screens (1024px and below) --- */
+/* when the screen is medium sized like a tablet */
+@media (max-width: 1024px) {
+
+    /* dashboard becomes single column instead of two columns */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* stat cards show 2 per row instead of 4 */
+    .stats-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* --- Mobile phones (768px and below) --- */
+/* when the screen is small like a phone */
+@media (max-width: 768px) {
+
+    /* reduce space between stat cards */
+    .stats-row {
+        gap: 12px;
+    }
+
+    /* make stat cards smaller on phones */
+    .stat-card {
+        padding: 16px;
+    }
+
+    /* smaller stat icon on phones */
+    .stat-card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    /* smaller stat number on phones */
+    .stat-card-value {
+        font-size: 1.2rem;
+    }
+
+    /* course cards stack vertically on phones instead of horizontal layout */
+    .course-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    /* center the progress ring when course card is stacked */
+    .course-progress-ring {
+        align-self: center;
+    }
+
+    /* quick action cards go single column on phones */
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Small phones (480px and below) --- */
+/* when the screen is very small like old phones */
+@media (max-width: 480px) {
+
+    /* stat cards show 1 per row on very small screens */
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* hide the trend percentage badge to save space */
+    .stat-card-trend {
+        display: none;
+    }
+
+    /* profile stats stack vertically instead of side by side */
+    .profile-stats-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* divider becomes horizontal line when stats are stacked */
+    .profile-stat-divider {
+        width: 60%;
+        height: 1px;
+    }
+}

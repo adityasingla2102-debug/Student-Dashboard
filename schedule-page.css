@@ -1,0 +1,154 @@
+/* ============================================
+   SCHEDULE-PAGE.CSS — Timeline Schedule
+   ============================================ */
+
+.schedule-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 8px;
+}
+
+.schedule-slot {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    min-height: 120px;
+}
+
+/* Time label on the left */
+.slot-time {
+    width: 70px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.time-hour {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f1f1f6;
+}
+
+.time-period {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #6b7290;
+    text-transform: uppercase;
+}
+
+/* Vertical line */
+.slot-line {
+    width: 3px;
+    background: #252548;
+    position: relative;
+    flex-shrink: 0;
+    border-radius: 3px;
+}
+
+.slot-dot {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 2px currentColor;
+}
+
+.slot-dot.purple { color: #6c3ce9; background: #6c3ce9; }
+.slot-dot.pink { color: #f43f8e; background: #f43f8e; }
+.slot-dot.gold { color: #f59e0b; background: #f59e0b; }
+.slot-dot.emerald { color: #10b981; background: #10b981; }
+
+/* Card next to the line */
+.slot-card {
+    flex: 1;
+    background: #181830;
+    border-radius: 18px;
+    padding: 22px 26px;
+    margin: 8px 0;
+    border: 1px solid #252548;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+    border-left: 4px solid transparent;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.slot-card:hover {
+    transform: translateX(6px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.slot-card.purple-border { border-left-color: #6c3ce9; }
+.slot-card.pink-border { border-left-color: #f43f8e; }
+.slot-card.gold-border { border-left-color: #f59e0b; }
+.slot-card.emerald-border { border-left-color: #10b981; }
+
+.slot-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.slot-card-header h4 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.slot-card p {
+    font-size: 0.82rem;
+    color: #6b7290;
+}
+
+.slot-meta {
+    display: flex;
+    gap: 18px;
+    font-size: 0.78rem;
+    color: #9ca3b8;
+    flex-wrap: wrap;
+}
+
+.slot-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.slot-meta i {
+    font-size: 0.7rem;
+    color: #6c3ce9;
+}
+
+/* --- Mobile phones (768px and below) --- */
+/* on phones, make the schedule timeline more compact */
+@media (max-width: 768px) {
+
+    /* make the time label column narrower on phones */
+    .slot-time {
+        width: 50px;
+    }
+    
+    /* smaller time text on phones */
+    .time-hour {
+        font-size: 0.85rem;
+    }
+
+    /* less padding in schedule cards on phones */
+    .slot-card {
+        padding: 16px 18px;
+    }
+
+    /* stack meta info vertically on phones instead of in a row */
+    .slot-meta {
+        flex-direction: column;
+        gap: 6px;
+    }
+}

@@ -1,0 +1,183 @@
+/* ============================================
+   COURSES-PAGE.CSS — Courses Grid Page
+   ============================================ */
+
+/* ============================================
+   COURSE FILTER — CSS-only radio-based filtering
+   Uses sibling combinator (~) to show/hide course tiles
+   based on which category radio input is checked.
+   ============================================ */
+
+/* Active tab styling based on which radio is checked */
+#course-filter-all:checked ~ .container label[for="course-filter-all"],
+#course-filter-progress:checked ~ .container label[for="course-filter-progress"],
+#course-filter-completed:checked ~ .container label[for="course-filter-completed"],
+#course-filter-new:checked ~ .container label[for="course-filter-new"] {
+    background: #6c3ce9;
+    color: #fff;
+    border-color: #6c3ce9;
+    box-shadow: 0 4px 14px rgba(108, 60, 233, 0.3);
+}
+
+/* Hide non-matching course tiles when a status filter is selected */
+#course-filter-progress:checked ~ .container .course-tile:not([data-status="progress"]),
+#course-filter-completed:checked ~ .container .course-tile:not([data-status="completed"]),
+#course-filter-new:checked ~ .container .course-tile:not([data-status="new"]) {
+    display: none;
+}
+
+/* Filter Tabs */
+.courses-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 10px 22px;
+    border-radius: 12px;
+    border: 1.5px solid #252548;
+    background: #181830;
+    color: #9ca3b8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-tab:hover {
+    border-color: #6c3ce9;
+    color: #6c3ce9;
+    background: rgba(108, 60, 233, 0.15);
+}
+
+.filter-tab.active {
+    background: #6c3ce9;
+    color: #fff;
+    border-color: #6c3ce9;
+    box-shadow: 0 4px 14px rgba(108, 60, 233, 0.3);
+}
+
+/* Courses Grid */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+/* Course Tile */
+.course-tile {
+    background: #181830;
+    border-radius: 22px;
+    border: 1px solid #252548;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.course-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.course-tile-banner {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-tile-banner.purple { background: linear-gradient(135deg, #8b5cf6, #6c3ce9, #4f25c4); }
+.course-tile-banner.pink { background: linear-gradient(135deg, #f43f8e, #ec4899); }
+.course-tile-banner.gold { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.course-tile-banner.emerald { background: linear-gradient(135deg, #10b981, #059669); }
+.course-tile-banner.sky { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+
+.course-tile-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.course-tile-emoji {
+    font-size: 48px;
+    z-index: 1;
+}
+
+.course-tile-banner .badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.course-tile-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.course-tile-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.course-tile-body p {
+    font-size: 0.82rem;
+    color: #6b7290;
+    line-height: 1.5;
+}
+
+.course-tile-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: #6b7290;
+    flex-wrap: wrap;
+}
+
+.course-tile-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.course-tile-meta i {
+    font-size: 0.7rem;
+    color: #6c3ce9;
+}
+
+.course-tile-progress {
+    margin-top: 2px;
+}
+
+.course-tile-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.course-tile-actions .btn {
+    flex: 1;
+}
+
+.course-tile-actions .btn-ghost {
+    flex: 0;
+    padding: 8px 12px;
+}
+
+/* --- Mobile phones (768px and below) --- */
+/* on phones, show 1 course tile per row instead of multiple columns */
+@media (max-width: 768px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}

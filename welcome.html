@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduDash — Welcome</title>
+    <meta name="description" content="Welcome to EduDash. Sign in to access your courses, track progress, and continue your learning journey.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="welcome.css">
+    <script src="https://kit.fontawesome.com/fd15269903.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Hidden checkbox for sign-in overlay -->
+    <input type="checkbox" id="signin-check" class="css-toggle-input">
+
+    <!-- ====== FULL-SCREEN WELCOME PAGE ====== -->
+    <div class="welcome-page">
+
+        <!-- Animated background orbs -->
+        <div class="welcome-bg">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="orb orb-4"></div>
+        </div>
+
+        <!-- Top Navigation -->
+        <nav class="welcome-nav">
+            <div class="welcome-nav-logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="logo-text">Edu<span>Dash</span></div>
+            </div>
+            <label for="signin-check" class="btn-signin-top">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Sign In
+            </label>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="welcome-hero">
+            <div class="welcome-hero-badge">
+                <i class="fa-solid fa-sparkles"></i>
+                The Future of Learning
+            </div>
+            <h1>Learn Without<br><span class="text-highlight">Limits</span></h1>
+            <p>Track your courses, monitor your progress, earn certificates, and unlock your full potential with EduDash — the premium student dashboard.</p>
+            <div class="welcome-hero-cta">
+                <label for="signin-check" class="btn-get-started">
+                    Get Started
+                    <i class="fa-solid fa-arrow-right"></i>
+                </label>
+                <a href="#stats" class="btn-learn-more">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Stats -->
+        <div class="welcome-stats" id="stats">
+            <div class="welcome-stat">
+                <div class="welcome-stat-value">10<span class="accent">K+</span></div>
+                <div class="welcome-stat-label">Active Students</div>
+            </div>
+            <div class="welcome-stat">
+                <div class="welcome-stat-value">500<span class="accent">+</span></div>
+                <div class="welcome-stat-label">Courses Available</div>
+            </div>
+            <div class="welcome-stat">
+                <div class="welcome-stat-value">98<span class="accent">%</span></div>
+                <div class="welcome-stat-label">Satisfaction Rate</div>
+            </div>
+            <div class="welcome-stat">
+                <div class="welcome-stat-value">50<span class="accent">+</span></div>
+                <div class="welcome-stat-label">Expert Mentors</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== SIGN-IN OVERLAY (CSS-only via sibling combinator) ====== -->
+    <div class="signin-overlay">
+        <label for="signin-check" class="signin-backdrop"></label>
+        <div class="signin-panel">
+            <!-- Panel Header -->
+            <div class="signin-panel-header">
+                <h2>Sign In</h2>
+                <label for="signin-check" class="btn-close-signin" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </label>
+            </div>
+
+            <!-- Panel Body -->
+            <div class="signin-panel-body">
+                <p class="login-subtitle">Welcome back! Enter your credentials to access your dashboard.</p>
+
+                <form class="login-form" action="index.html" method="get">
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+                        <i class="fa-solid fa-eye input-icon"></i>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember-me">
+                            <span>Remember me</span>
+                        </label>
+                        <a class="forgot-link" href="#">Forgot Password?</a>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn-login">
+                        <span>Continue</span>
+                        <span class="btn-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="login-divider">
+                    <span>or Connect with</span>
+                </div>
+
+                <!-- Social Buttons -->
+                <div class="social-buttons">
+                    <a href="index.html" class="btn-social google">
+                        <i class="fa-brands fa-google"></i>
+                        Sign In With Google
+                    </a>
+                    <a href="index.html" class="btn-social github">
+                        <i class="fa-brands fa-github"></i>
+                        Sign In With GitHub
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <div class="login-footer">
+                    Don't have an account? <a href="#">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

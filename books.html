@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduDash — Bookshop</title>
+    <meta name="description" content="Browse and purchase academic books on EduDash. Find textbooks for all your courses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="books-page.css">
+    <script src="https://kit.fontawesome.com/fd15269903.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input type="checkbox" id="sidebar-check" class="css-toggle-input">
+    <!-- Book filter radios (placed at body level for sibling combinator) -->
+    <input type="radio" name="book-filter" id="book-filter-all" class="css-toggle-input" checked>
+    <input type="radio" name="book-filter" id="book-filter-physics" class="css-toggle-input">
+    <input type="radio" name="book-filter" id="book-filter-chemistry" class="css-toggle-input">
+    <input type="radio" name="book-filter" id="book-filter-design" class="css-toggle-input">
+    <input type="radio" name="book-filter" id="book-filter-programming" class="css-toggle-input">
+    <input type="radio" name="book-filter" id="book-filter-ai" class="css-toggle-input">
+
+    <label for="sidebar-check" class="mobile-sidebar-label">
+        <i class="fa-solid fa-bars icon-bars"></i>
+        <i class="fa-solid fa-xmark icon-close"></i>
+    </label>
+    <label for="sidebar-check" class="sidebar-overlay-label"></label>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="logo-text">Edu<span>Dash</span></div>
+            </div>
+            <div class="sidebar-section-label">Main Menu</div>
+            <nav class="sidebar-nav">
+                <a href="index.html" title="Dashboard"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a href="courses.html" title="Courses"><i class="fa-solid fa-book-open"></i><span>My Courses</span><span class="nav-badge">5</span></a>
+                <a href="books.html" class="active" title="Books"><i class="fa-solid fa-book"></i><span>Bookshop</span></a>
+                <a href="schedule.html" title="Schedule"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a>
+                <a href="assignments.html" title="Assignments"><i class="fa-solid fa-clipboard-list"></i><span>Assignments</span><span class="nav-badge">3</span></a>
+                <a href="profile.html" title="Profile"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1>Bookshop 📚</h1>
+                    <p>Browse academic textbooks for your courses</p>
+                </div>
+                <form class="header-search-form" action="books.html" method="get">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="search" placeholder="Search books…" autocomplete="off">
+                    <div class="search-suggestions">
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-atom"></i><span>Quantum Physics: An Introduction</span><span class="suggestion-sub">₹2,499</span></a>
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-flask"></i><span>Organic Chemistry</span><span class="suggestion-sub">₹2,899</span></a>
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-palette"></i><span>Color Theory &amp; Design</span><span class="suggestion-sub">₹1,999</span></a>
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-code"></i><span>JavaScript Essentials</span><span class="suggestion-sub">₹2,349</span></a>
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-brain"></i><span>Machine Learning Fundamentals</span><span class="suggestion-sub">₹3,399</span></a>
+                        <a href="books.html" class="search-suggestion-item"><i class="fa-solid fa-laptop-code"></i><span>Data Structures &amp; Algorithms</span><span class="suggestion-sub">₹2,749</span></a>
+                    </div>
+                </form>
+                <div class="header-actions">
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Notifications" type="button">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Notifications <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon rose"><i class="fa-solid fa-clock"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Assignment Due Soon</h4>
+                                        <p>Chemistry Lab Report is due in 2 days. Don't forget to submit!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-star"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Grade Posted</h4>
+                                        <p>You scored 92% on Color Palette Research. Great work!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">5h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-book-open"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>New Course Material</h4>
+                                        <p>Chapter 8 slides for Quantum Physics have been uploaded.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon gold"><i class="fa-solid fa-trophy"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Achievement Unlocked!</h4>
+                                        <p>You've earned the "7-Day Streak" badge. Keep it up!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Messages" type="button">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Messages & Circulars <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon sky"><i class="fa-solid fa-bullhorn"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Mid-Term Exam Schedule</h4>
+                                        <p>Mid-term exams will be held from March 20-25. Check your schedule for details.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon orange"><i class="fa-solid fa-book"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Library Notice</h4>
+                                        <p>New books on Machine Learning are now available in the central library.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">3h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-user-tie"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Message from Dr. Smith</h4>
+                                        <p>Please review the updated grading rubric for the Physics Quiz next week.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">6h ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-calendar-check"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Campus Holiday Notice</h4>
+                                        <p>The campus will be closed on March 14 for Holi celebrations. Classes resume March 15.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="profile.html" class="header-avatar" title="Profile">AM</a>
+                </div>
+            </header>
+
+            <div class="main-content">
+
+                <!-- Filter Tabs (radio-based, no JS) -->
+                <div class="books-filter animate-fadeInUp">
+                    <label for="book-filter-all" class="filter-tab">All Books</label>
+                    <label for="book-filter-physics" class="filter-tab">Physics</label>
+                    <label for="book-filter-chemistry" class="filter-tab">Chemistry</label>
+                    <label for="book-filter-design" class="filter-tab">Design</label>
+                    <label for="book-filter-programming" class="filter-tab">Programming</label>
+                    <label for="book-filter-ai" class="filter-tab">AI &amp; ML</label>
+                </div>
+
+                <!-- Books Grid -->
+                <div class="books-grid animate-fadeInUp animate-delay-1" id="books-grid">
+                    <!-- Book 1 -->
+                    <div class="book-card" data-category="physics" data-id="1" data-name="Quantum Physics: An Introduction" data-price="2499" data-author="Dr. Richard Feynman" data-img="quantum_physics_book.png">
+                        <div class="book-cover">
+                            <img src="quantum_physics_book.png" alt="Quantum Physics Book Cover">
+                            <span class="book-category physics">Physics</span>
+                        </div>
+                        <div class="book-body">
+                            <h3>Quantum Physics: An Introduction</h3>
+                            <div class="book-author"><i class="fa-solid fa-pen-nib"></i> Dr. Richard Feynman</div>
+                            <p class="book-description">Explore the fundamentals of quantum mechanics, wave-particle duality, and Schrödinger's equation with clear explanations.</p>
+                            <div class="book-meta">
+                                <span><i class="fa-solid fa-file-lines"></i> 420 pages</span>
+                                <span><i class="fa-solid fa-language"></i> English</span>
+                            </div>
+                            <div class="book-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.5 (128)</span>
+                            </div>
+                        </div>
+                        <div class="book-footer">
+                            <div class="book-price">
+                                <span class="price-current">₹2,499</span>
+                                <span class="price-original">₹4,199</span>
+                                <span class="price-discount">40% OFF</span>
+                            </div>
+                            <a href="payment.html" class="btn-add-cart">
+                                <i class="fa-solid fa-cart-plus"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="book-card" data-category="chemistry" data-id="2" data-name="Organic Chemistry" data-price="2899" data-author="Prof. Paula Lee" data-img="organic_chemistry_book.png">
+                        <div class="book-cover">
+                            <img src="organic_chemistry_book.png" alt="Organic Chemistry Book Cover">
+                            <span class="book-category chemistry">Chemistry</span>
+                        </div>
+                        <div class="book-body">
+                            <h3>Organic Chemistry</h3>
+                            <div class="book-author"><i class="fa-solid fa-pen-nib"></i> Prof. Paula Lee</div>
+                            <p class="book-description">Master organic reactions, functional groups, synthesis strategies, and spectroscopy techniques.</p>
+                            <div class="book-meta">
+                                <span><i class="fa-solid fa-file-lines"></i> 580 pages</span>
+                                <span><i class="fa-solid fa-language"></i> English</span>
+                            </div>
+                            <div class="book-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star empty"></i>
+                                <span>4.0 (96)</span>
+                            </div>
+                        </div>
+                        <div class="book-footer">
+                            <div class="book-price">
+                                <span class="price-current">₹2,899</span>
+                                <span class="price-original">₹4,599</span>
+                                <span class="price-discount">36% OFF</span>
+                            </div>
+                            <a href="payment.html" class="btn-add-cart">
+                                <i class="fa-solid fa-cart-plus"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Book 3 -->
+                    <div class="book-card" data-category="design" data-id="3" data-name="Color Theory &amp; Design" data-price="1999" data-author="Emily Chen" data-img="color_theory_book.png">
+                        <div class="book-cover">
+                            <img src="color_theory_book.png" alt="Color Theory Book Cover">
+                            <span class="book-category design">Design</span>
+                        </div>
+                        <div class="book-body">
+                            <h3>Color Theory & Design</h3>
+                            <div class="book-author"><i class="fa-solid fa-pen-nib"></i> Emily Chen</div>
+                            <p class="book-description">Learn the principles of color, composition, visual hierarchy, and practical design applications.</p>
+                            <div class="book-meta">
+                                <span><i class="fa-solid fa-file-lines"></i> 320 pages</span>
+                                <span><i class="fa-solid fa-language"></i> English</span>
+                            </div>
+                            <div class="book-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <span>4.9 (214)</span>
+                            </div>
+                        </div>
+                        <div class="book-footer">
+                            <div class="book-price">
+                                <span class="price-current">₹1,999</span>
+                                <span class="price-original">₹3,399</span>
+                                <span class="price-discount">41% OFF</span>
+                            </div>
+                            <a href="payment.html" class="btn-add-cart">
+                                <i class="fa-solid fa-cart-plus"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Book 4 -->
+                    <div class="book-card" data-category="programming" data-id="4" data-name="JavaScript Essentials" data-price="2349" data-author="Ajay Patel" data-img="javascript_book.png">
+                        <div class="book-cover">
+                            <img src="javascript_book.png" alt="JavaScript Book Cover">
+                            <span class="book-category programming">Programming</span>
+                        </div>
+                        <div class="book-body">
+                            <h3>JavaScript Essentials</h3>
+                            <div class="book-author"><i class="fa-solid fa-pen-nib"></i> Ajay Patel</div>
+                            <p class="book-description">Build a solid foundation in modern JavaScript from basics to ES6+, async/await, and DOM manipulation.</p>
+                            <div class="book-meta">
+                                <span><i class="fa-solid fa-file-lines"></i> 490 pages</span>
+                                <span><i class="fa-solid fa-language"></i> English</span>
+                            </div>
+                            <div class="book-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.6 (342)</span>
+                            </div>
+                        </div>
+                        <div class="book-footer">
+                            <div class="book-price">
+                                <span class="price-current">₹2,349</span>
+                                <span class="price-original">₹3,799</span>
+                                <span class="price-discount">38% OFF</span>
+                            </div>
+                            <a href="payment.html" class="btn-add-cart">
+                                <i class="fa-solid fa-cart-plus"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Book 5 -->
+                    <div class="book-card" data-category="ai" data-id="5" data-name="Machine Learning Fundamentals" data-price="3399" data-author="Dr. Andrew Ng" data-img="machine_learning_book.png">
+                        <div class="book-cover">
+                            <img src="machine_learning_book.png" alt="Machine Learning Book Cover">
+                            <span class="book-category ai">AI & ML</span>
+                        </div>
+                        <div class="book-body">
+                            <h3>Machine Learning Fundamentals</h3>
+                            <div class="book-author"><i class="fa-solid fa-pen-nib"></i> Dr. Andrew Ng</div>
+                            <p class="book-description">Get started with ML algorithms, neural networks, data preprocessing, and model evaluation.</p>
+                            <div class="book-meta">
+                                <span><i class="fa-solid fa-file-lines"></i> 640 pages</span>
+                                <span><i class="fa-solid fa-language"></i> English</span>
+                            </div>
+                            <div class="book-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <span>4.8 (567)</span>
+                            </div>
+                        </div>
+                        <div class="book-footer">
+                            <div class="book-price">
+                                <span class="price-current">₹3,399</span>
+                                <span class="price-original">₹5,499</span>
+                                <span class="price-discount">38% OFF</span>
+                            </div>
+                            <a href="payment.html" class="btn-add-cart">
+                                <i class="fa-solid fa-cart-plus"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Book 6 -->
+                    <div class="book-card" data-category="programming" data-id="6" data-name="Data Structures &amp; Algorithms" data-price="2749" data-author="Prof. Thomas Cormen" data-img="data_structures_book.png">
+                        <div class="book-cover">
+                            <img src="data_structures_book.png" alt="Data Structures Book Cover">
+                            <span class="book-category cs">CS</span>
+                        </div>
+                        <div class="book-body">
+                            <h3>Data Structures & Algorithms</h3>
+                            <div class="book-author"><i class="fa-solid fa-pen-nib"></i> Prof. Thomas Cormen</div>
+                            <p class="book-description">Comprehensive guide to arrays, trees, graphs, sorting, searching, and algorithmic complexity.</p>
+                            <div class="book-meta">
+                                <span><i class="fa-solid fa-file-lines"></i> 720 pages</span>
+                                <span><i class="fa-solid fa-language"></i> English</span>
+                            </div>
+                            <div class="book-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <span>4.7 (189)</span>
+                            </div>
+                        </div>
+                        <div class="book-footer">
+                            <div class="book-price">
+                                <span class="price-current">₹2,749</span>
+                                <span class="price-original">₹4,499</span>
+                                <span class="price-discount">39% OFF</span>
+                            </div>
+                            <a href="payment.html" class="btn-add-cart">
+                                <i class="fa-solid fa-cart-plus"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="books.js"></script>
+    <script src="search.js"></script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

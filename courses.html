@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduDash — My Courses</title>
+    <meta name="description" content="Browse and manage your enrolled courses on EduDash.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="courses-page.css">
+    <script src="https://kit.fontawesome.com/fd15269903.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Hidden controls -->
+    <input type="checkbox" id="sidebar-check" class="css-toggle-input">
+    <!-- Course filter radios (placed at body level for sibling combinator) -->
+    <input type="radio" name="course-filter" id="course-filter-all" class="css-toggle-input" checked>
+    <input type="radio" name="course-filter" id="course-filter-progress" class="css-toggle-input">
+    <input type="radio" name="course-filter" id="course-filter-completed" class="css-toggle-input">
+    <input type="radio" name="course-filter" id="course-filter-new" class="css-toggle-input">
+
+    <label for="sidebar-check" class="mobile-sidebar-label">
+        <i class="fa-solid fa-bars icon-bars"></i>
+        <i class="fa-solid fa-xmark icon-close"></i>
+    </label>
+    <label for="sidebar-check" class="sidebar-overlay-label"></label>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="logo-text">Edu<span>Dash</span></div>
+            </div>
+            <div class="sidebar-section-label">Main Menu</div>
+            <nav class="sidebar-nav">
+                <a href="index.html" title="Dashboard"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a href="courses.html" class="active" title="Courses"><i class="fa-solid fa-book-open"></i><span>My Courses</span><span class="nav-badge">5</span></a>
+                <a href="books.html" title="Books"><i class="fa-solid fa-book"></i><span>Bookshop</span></a>
+                <a href="schedule.html" title="Schedule"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a>
+                <a href="assignments.html" title="Assignments"><i class="fa-solid fa-clipboard-list"></i><span>Assignments</span><span class="nav-badge">3</span></a>
+                <a href="profile.html" title="Profile"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1>My Courses</h1>
+                    <p>Browse and manage your enrolled courses</p>
+                </div>
+                <form class="header-search-form" action="courses.html" method="get">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="search" placeholder="Search courses…" autocomplete="off">
+                    <div class="search-suggestions">
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-atom"></i><span>Quantum Physics</span><span class="suggestion-sub">In Progress</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-flask"></i><span>Organic Chemistry</span><span class="suggestion-sub">In Progress</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-palette"></i><span>Color Theory &amp; Design</span><span class="suggestion-sub">In Progress</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-code"></i><span>JavaScript Essentials</span><span class="suggestion-sub">Completed</span></a>
+                        <a href="courses.html" class="search-suggestion-item"><i class="fa-solid fa-brain"></i><span>Machine Learning Intro</span><span class="suggestion-sub">New</span></a>
+                    </div>
+                </form>
+                <div class="header-actions">
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Notifications" type="button">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Notifications <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon rose"><i class="fa-solid fa-clock"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Assignment Due Soon</h4>
+                                        <p>Chemistry Lab Report is due in 2 days. Don't forget to submit!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-star"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Grade Posted</h4>
+                                        <p>You scored 92% on Color Palette Research. Great work!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">5h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-book-open"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>New Course Material</h4>
+                                        <p>Chapter 8 slides for Quantum Physics have been uploaded.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon gold"><i class="fa-solid fa-trophy"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Achievement Unlocked!</h4>
+                                        <p>You've earned the "7-Day Streak" badge. Keep it up!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Messages" type="button">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Messages & Circulars <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon sky"><i class="fa-solid fa-bullhorn"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Mid-Term Exam Schedule</h4>
+                                        <p>Mid-term exams will be held from March 20-25. Check your schedule for details.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon orange"><i class="fa-solid fa-book"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Library Notice</h4>
+                                        <p>New books on Machine Learning are now available in the central library.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">3h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-user-tie"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Message from Dr. Smith</h4>
+                                        <p>Please review the updated grading rubric for the Physics Quiz next week.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">6h ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-calendar-check"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Campus Holiday Notice</h4>
+                                        <p>The campus will be closed on March 14 for Holi celebrations. Classes resume March 15.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="profile.html" class="header-avatar" title="Profile">AM</a>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <!-- Filter Tabs (radio-based) -->
+                <div class="courses-filter-radios">
+                    <label for="course-filter-all" class="filter-tab">All Courses</label>
+                    <label for="course-filter-progress" class="filter-tab">In Progress</label>
+                    <label for="course-filter-completed" class="filter-tab">Completed</label>
+                    <label for="course-filter-new" class="filter-tab">New</label>
+                </div>
+
+                <!-- Courses Grid -->
+                <div class="courses-grid animate-fadeInUp animate-delay-1">
+                    <!-- Course 1 -->
+                    <div class="course-tile" data-status="progress">
+                        <div class="course-tile-banner purple">
+                            <div class="course-tile-emoji">🧬</div>
+                            <span class="badge badge-emerald">79%</span>
+                        </div>
+                        <div class="course-tile-body">
+                            <h3>Quantum Physics</h3>
+                            <p>Explore the fundamentals of quantum mechanics and wave-particle duality.</p>
+                            <div class="course-tile-meta">
+                                <span><i class="fa-solid fa-layer-group"></i> 12 Lessons</span>
+                                <span><i class="fa-solid fa-clock"></i> 8h 30m</span>
+                                <span><i class="fa-solid fa-users"></i> 312</span>
+                            </div>
+                            <div class="course-tile-progress">
+                                <div class="progress-track"><div class="progress-fill emerald" style="width:79%"></div></div>
+                            </div>
+                            <div class="course-tile-actions">
+                                <a href="schedule.html" class="btn btn-primary btn-sm">Continue</a>
+                                <button class="btn btn-ghost btn-sm course-menu-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="course-context-menu">
+                                    <a class="context-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Unenroll</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-share-nodes"></i> Share Course</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-download"></i> Download Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="course-tile" data-status="progress">
+                        <div class="course-tile-banner pink">
+                            <div class="course-tile-emoji">🧪</div>
+                            <span class="badge badge-purple">65%</span>
+                        </div>
+                        <div class="course-tile-body">
+                            <h3>Organic Chemistry</h3>
+                            <p>Master organic reactions, functional groups, and synthesis strategies.</p>
+                            <div class="course-tile-meta">
+                                <span><i class="fa-solid fa-layer-group"></i> 10 Lessons</span>
+                                <span><i class="fa-solid fa-clock"></i> 6h 15m</span>
+                                <span><i class="fa-solid fa-users"></i> 256</span>
+                            </div>
+                            <div class="course-tile-progress">
+                                <div class="progress-track"><div class="progress-fill purple" style="width:65%"></div></div>
+                            </div>
+                            <div class="course-tile-actions">
+                                <a href="schedule.html" class="btn btn-primary btn-sm">Continue</a>
+                                <button class="btn btn-ghost btn-sm course-menu-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="course-context-menu">
+                                    <a class="context-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Unenroll</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-share-nodes"></i> Share Course</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-download"></i> Download Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="course-tile" data-status="progress">
+                        <div class="course-tile-banner gold">
+                            <div class="course-tile-emoji">🎨</div>
+                            <span class="badge badge-gold">50%</span>
+                        </div>
+                        <div class="course-tile-body">
+                            <h3>Color Theory &amp; Design</h3>
+                            <p>Learn the principles of color, composition, and visual hierarchy.</p>
+                            <div class="course-tile-meta">
+                                <span><i class="fa-solid fa-layer-group"></i> 8 Lessons</span>
+                                <span><i class="fa-solid fa-clock"></i> 5h 00m</span>
+                                <span><i class="fa-solid fa-users"></i> 189</span>
+                            </div>
+                            <div class="course-tile-progress">
+                                <div class="progress-track"><div class="progress-fill gold" style="width:50%"></div></div>
+                            </div>
+                            <div class="course-tile-actions">
+                                <a href="schedule.html" class="btn btn-primary btn-sm">Continue</a>
+                                <button class="btn btn-ghost btn-sm course-menu-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="course-context-menu">
+                                    <a class="context-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Unenroll</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-share-nodes"></i> Share Course</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-download"></i> Download Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 4 -->
+                    <div class="course-tile" data-status="completed">
+                        <div class="course-tile-banner emerald">
+                            <div class="course-tile-emoji">💻</div>
+                            <span class="badge badge-emerald">100%</span>
+                        </div>
+                        <div class="course-tile-body">
+                            <h3>JavaScript Essentials</h3>
+                            <p>Build a solid foundation in modern JavaScript from basics to ES6+.</p>
+                            <div class="course-tile-meta">
+                                <span><i class="fa-solid fa-layer-group"></i> 15 Lessons</span>
+                                <span><i class="fa-solid fa-clock"></i> 10h 45m</span>
+                                <span><i class="fa-solid fa-users"></i> 684</span>
+                            </div>
+                            <div class="course-tile-progress">
+                                <div class="progress-track"><div class="progress-fill emerald" style="width:100%"></div></div>
+                            </div>
+                            <div class="course-tile-actions">
+                                <a href="assignments.html" class="btn btn-outline btn-sm">Review</a>
+                                <button class="btn btn-ghost btn-sm course-menu-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="course-context-menu">
+                                    <a class="context-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Unenroll</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-share-nodes"></i> Share Course</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-download"></i> Download Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 5 -->
+                    <div class="course-tile" data-status="new">
+                        <div class="course-tile-banner sky">
+                            <div class="course-tile-emoji">🧠</div>
+                            <span class="badge badge-sky">20%</span>
+                        </div>
+                        <div class="course-tile-body">
+                            <h3>Machine Learning Intro</h3>
+                            <p>Get started with ML algorithms, neural networks, and data processing.</p>
+                            <div class="course-tile-meta">
+                                <span><i class="fa-solid fa-layer-group"></i> 20 Lessons</span>
+                                <span><i class="fa-solid fa-clock"></i> 14h 00m</span>
+                                <span><i class="fa-solid fa-users"></i> 521</span>
+                            </div>
+                            <div class="course-tile-progress">
+                                <div class="progress-track"><div class="progress-fill purple" style="width:20%"></div></div>
+                            </div>
+                            <div class="course-tile-actions">
+                                <a href="schedule.html" class="btn btn-primary btn-sm">Continue</a>
+                                <button class="btn btn-ghost btn-sm course-menu-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="course-context-menu">
+                                    <a class="context-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Unenroll</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-share-nodes"></i> Share Course</a>
+                                    <a class="context-item" href="#"><i class="fa-solid fa-download"></i> Download Materials</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="search.js"></script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

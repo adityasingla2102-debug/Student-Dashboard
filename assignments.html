@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduDash — Assignments</title>
+    <meta name="description" content="Track your assignments, due dates, and submission status on EduDash.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="assignments-page.css">
+    <script src="https://kit.fontawesome.com/fd15269903.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Hidden controls -->
+    <input type="checkbox" id="sidebar-check" class="css-toggle-input">
+    <!-- Assignment filter radios -->
+    <input type="radio" name="assign-filter" id="assign-filter-all" class="css-toggle-input" checked>
+    <input type="radio" name="assign-filter" id="assign-filter-pending" class="css-toggle-input">
+    <input type="radio" name="assign-filter" id="assign-filter-submitted" class="css-toggle-input">
+    <input type="radio" name="assign-filter" id="assign-filter-graded" class="css-toggle-input">
+
+    <label for="sidebar-check" class="mobile-sidebar-label">
+        <i class="fa-solid fa-bars icon-bars"></i>
+        <i class="fa-solid fa-xmark icon-close"></i>
+    </label>
+    <label for="sidebar-check" class="sidebar-overlay-label"></label>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="logo-text">Edu<span>Dash</span></div>
+            </div>
+            <div class="sidebar-section-label">Main Menu</div>
+            <nav class="sidebar-nav">
+                <a href="index.html" title="Dashboard"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a href="courses.html" title="Courses"><i class="fa-solid fa-book-open"></i><span>My Courses</span><span class="nav-badge">5</span></a>
+                <a href="books.html" title="Books"><i class="fa-solid fa-book"></i><span>Bookshop</span></a>
+                <a href="schedule.html" title="Schedule"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a>
+                <a href="assignments.html" class="active" title="Assignments"><i class="fa-solid fa-clipboard-list"></i><span>Assignments</span><span class="nav-badge">3</span></a>
+                <a href="profile.html" title="Profile"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+            </nav>
+        </aside>
+
+        <div class="main">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1>Assignments</h1>
+                    <p>Track your tasks and deadlines</p>
+                </div>
+                <form class="header-search-form" action="assignments.html" method="get">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="search" placeholder="Search assignments…" autocomplete="off">
+                    <div class="search-suggestions">
+                        <a href="assignments.html" class="search-suggestion-item"><i class="fa-solid fa-flask"></i><span>Chemistry Lab Report</span><span class="suggestion-sub">Pending</span></a>
+                        <a href="assignments.html" class="search-suggestion-item"><i class="fa-solid fa-code"></i><span>JavaScript Project</span><span class="suggestion-sub">Pending</span></a>
+                        <a href="assignments.html" class="search-suggestion-item"><i class="fa-solid fa-atom"></i><span>Physics Quiz Preparation</span><span class="suggestion-sub">Upcoming</span></a>
+                        <a href="assignments.html" class="search-suggestion-item"><i class="fa-solid fa-palette"></i><span>Color Palette Research</span><span class="suggestion-sub">Graded</span></a>
+                        <a href="assignments.html" class="search-suggestion-item"><i class="fa-solid fa-brain"></i><span>ML Dataset Analysis</span><span class="suggestion-sub">Graded</span></a>
+                    </div>
+                </form>
+                <div class="header-actions">
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Notifications" type="button">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Notifications <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon rose"><i class="fa-solid fa-clock"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Assignment Due Soon</h4>
+                                        <p>Chemistry Lab Report is due in 2 days. Don't forget to submit!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-star"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Grade Posted</h4>
+                                        <p>You scored 92% on Color Palette Research. Great work!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">5h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-book-open"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>New Course Material</h4>
+                                        <p>Chapter 8 slides for Quantum Physics have been uploaded.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon gold"><i class="fa-solid fa-trophy"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Achievement Unlocked!</h4>
+                                        <p>You've earned the "7-Day Streak" badge. Keep it up!</p>
+                                    </div>
+                                    <span class="dropdown-item-time">2d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-wrapper" tabindex="-1">
+                        <button class="header-icon-btn" title="Messages" type="button">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="badge-dot"></span>
+                        </button>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h3>Messages & Circulars <span class="count-badge">4</span></h3>
+                                <span class="mark-read">Mark all read</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon sky"><i class="fa-solid fa-bullhorn"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Mid-Term Exam Schedule</h4>
+                                        <p>Mid-term exams will be held from March 20-25. Check your schedule for details.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon orange"><i class="fa-solid fa-book"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Library Notice</h4>
+                                        <p>New books on Machine Learning are now available in the central library.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">3h ago</span>
+                                </div>
+                                <div class="dropdown-item unread">
+                                    <div class="dropdown-item-icon purple"><i class="fa-solid fa-user-tie"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Message from Dr. Smith</h4>
+                                        <p>Please review the updated grading rubric for the Physics Quiz next week.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">6h ago</span>
+                                </div>
+                                <div class="dropdown-item">
+                                    <div class="dropdown-item-icon emerald"><i class="fa-solid fa-calendar-check"></i></div>
+                                    <div class="dropdown-item-content">
+                                        <h4>Campus Holiday Notice</h4>
+                                        <p>The campus will be closed on March 14 for Holi celebrations. Classes resume March 15.</p>
+                                    </div>
+                                    <span class="dropdown-item-time">1d ago</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="profile.html" class="header-avatar" title="Profile">AM</a>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <!-- Filter (radio-based) -->
+                <div class="assignments-filter-radios">
+                    <label for="assign-filter-all" class="filter-tab">All</label>
+                    <label for="assign-filter-pending" class="filter-tab">Pending</label>
+                    <label for="assign-filter-submitted" class="filter-tab">Submitted</label>
+                    <label for="assign-filter-graded" class="filter-tab">Graded</label>
+                </div>
+
+                <!-- Assignment List -->
+                <div class="assignments-list">
+                    <!-- Assignment 1 — Urgent -->
+                    <div class="assignment-card animate-fadeInUp animate-delay-1" data-status="pending">
+                        <div class="assignment-icon" style="background: rgba(244, 63, 94, 0.1); color: #f43f5e;">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <div class="assignment-info">
+                            <div class="assignment-header">
+                                <h4>Chemistry Lab Report</h4>
+                                <span class="badge badge-rose">Urgent</span>
+                            </div>
+                            <p>Write a detailed lab report on Experiment 5: Ester Synthesis including observations and conclusions.</p>
+                            <div class="assignment-meta">
+                                <span><i class="fa-solid fa-calendar"></i> Due Mar 12, 2026</span>
+                                <span><i class="fa-solid fa-book-open"></i> Organic Chemistry</span>
+                                <span><i class="fa-solid fa-star"></i> 40 points</span>
+                            </div>
+                        </div>
+                        <div class="assignment-action">
+                            <a href="courses.html" class="btn btn-primary btn-sm">Submit</a>
+                        </div>
+                    </div>
+
+                    <!-- Assignment 2 — Pending -->
+                    <div class="assignment-card animate-fadeInUp animate-delay-2" data-status="pending">
+                        <div class="assignment-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="assignment-info">
+                            <div class="assignment-header">
+                                <h4>JavaScript Project</h4>
+                                <span class="badge badge-gold">Pending</span>
+                            </div>
+                            <p>Build a to-do list application using vanilla JavaScript with local storage persistence.</p>
+                            <div class="assignment-meta">
+                                <span><i class="fa-solid fa-calendar"></i> Due Mar 15, 2026</span>
+                                <span><i class="fa-solid fa-book-open"></i> JavaScript Essentials</span>
+                                <span><i class="fa-solid fa-star"></i> 60 points</span>
+                            </div>
+                        </div>
+                        <div class="assignment-action">
+                            <a href="courses.html" class="btn btn-primary btn-sm">Submit</a>
+                        </div>
+                    </div>
+
+                    <!-- Assignment 3 — Upcoming -->
+                    <div class="assignment-card animate-fadeInUp animate-delay-3" data-status="pending">
+                        <div class="assignment-icon" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9;">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                        <div class="assignment-info">
+                            <div class="assignment-header">
+                                <h4>Physics Quiz Preparation</h4>
+                                <span class="badge badge-sky">Upcoming</span>
+                            </div>
+                            <p>Prepare for Chapter 7-9 quiz on wave-particle duality and Schrödinger's equation.</p>
+                            <div class="assignment-meta">
+                                <span><i class="fa-solid fa-calendar"></i> Due Mar 17, 2026</span>
+                                <span><i class="fa-solid fa-book-open"></i> Quantum Physics</span>
+                                <span><i class="fa-solid fa-star"></i> 30 points</span>
+                            </div>
+                        </div>
+                        <div class="assignment-action">
+                            <a href="schedule.html" class="btn btn-outline btn-sm">View</a>
+                        </div>
+                    </div>
+
+                    <!-- Assignment 4 — Graded -->
+                    <div class="assignment-card completed animate-fadeInUp animate-delay-4" data-status="graded">
+                        <div class="assignment-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div class="assignment-info">
+                            <div class="assignment-header">
+                                <h4>Color Palette Research</h4>
+                                <span class="badge badge-emerald">Graded — 92%</span>
+                            </div>
+                            <p>Research and present examples of effective color palettes from 5 different design disciplines.</p>
+                            <div class="assignment-meta">
+                                <span><i class="fa-solid fa-calendar"></i> Submitted Mar 5</span>
+                                <span><i class="fa-solid fa-book-open"></i> Color Theory</span>
+                                <span><i class="fa-solid fa-star"></i> 46/50 points</span>
+                            </div>
+                        </div>
+                        <div class="assignment-action">
+                            <a href="courses.html" class="btn btn-ghost btn-sm">Review</a>
+                        </div>
+                    </div>
+
+                    <!-- Assignment 5 — Graded -->
+                    <div class="assignment-card completed animate-fadeInUp animate-delay-5" data-status="graded">
+                        <div class="assignment-icon" style="background: rgba(108, 60, 233, 0.1); color: #6c3ce9;">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div class="assignment-info">
+                            <div class="assignment-header">
+                                <h4>ML Dataset Analysis</h4>
+                                <span class="badge badge-emerald">Graded — 88%</span>
+                            </div>
+                            <p>Analyze the Iris dataset using pandas and scikit-learn, then create visualizations.</p>
+                            <div class="assignment-meta">
+                                <span><i class="fa-solid fa-calendar"></i> Submitted Mar 2</span>
+                                <span><i class="fa-solid fa-book-open"></i> Machine Learning</span>
+                                <span><i class="fa-solid fa-star"></i> 44/50 points</span>
+                            </div>
+                        </div>
+                        <div class="assignment-action">
+                            <a href="courses.html" class="btn btn-ghost btn-sm">Review</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="search.js"></script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

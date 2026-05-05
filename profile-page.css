@@ -1,0 +1,419 @@
+/* ============================================
+   PROFILE-PAGE.CSS — Profile Page Styles
+   ============================================ */
+
+/* Two-column profile layout */
+.profile-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.profile-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.profile-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ---- Profile Card (reused from common/style.css, extended here) ---- */
+.profile-card {
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.profile-banner {
+    height: 130px;
+    background: linear-gradient(135deg, #8b5cf6, #6c3ce9, #4f25c4);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-banner-pattern {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.profile-card .profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: #181830;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #6c3ce9;
+    margin: -40px auto 0;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 4px solid #ffffff;
+    z-index: 1;
+}
+
+.profile-card .profile-info {
+    padding: 16px 24px 0;
+}
+
+.profile-card .profile-info h3 {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+}
+
+.profile-card .profile-info p {
+    font-size: 0.78rem;
+    color: #6b7290;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.profile-card .profile-info p i {
+    color: #f43f8e;
+    font-size: 0.7rem;
+}
+
+.profile-bio {
+    margin-top: 8px;
+    font-size: 0.82rem !important;
+    color: #9ca3b8 !important;
+    display: block !important;
+    line-height: 1.5;
+}
+
+.profile-stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    gap: 0;
+}
+
+.profile-stat {
+    flex: 1;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.profile-stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-size: 16px;
+}
+
+.profile-stat-icon.book {
+    background: rgba(108, 60, 233, 0.1);
+    color: #6c3ce9;
+}
+
+.profile-stat-icon.crown {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.profile-stat-icon.star {
+    background: rgba(244, 63, 142, 0.1);
+    color: #f43f8e;
+}
+
+.profile-stat h4 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #f1f1f6;
+    margin-bottom: 2px;
+}
+
+.profile-stat span {
+    font-size: 0.72rem;
+    color: #6b7290;
+    font-weight: 500;
+}
+
+.profile-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: #252548;
+    flex-shrink: 0;
+}
+
+/* ---- XP Card ---- */
+.xp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.xp-card-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.xp-icon-box {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    background: #1e1e3a;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 6px;
+}
+
+.xp-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.xp-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.xp-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.xp-label {
+    font-size: 0.75rem;
+    color: #6b7290;
+    font-weight: 500;
+}
+
+.xp-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.xp-next {
+    font-size: 0.68rem;
+    color: #6b7290;
+}
+
+.xp-card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.xp-card-actions .btn {
+    flex: 1;
+}
+
+/* ---- Personal Information Grid ---- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6b7290;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.info-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f1f1f6;
+}
+
+/* ---- Achievements Grid ---- */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.achievement-card {
+    padding: 20px;
+    background: #1e1e3a;
+    border-radius: 18px;
+    border: 1px solid #252548;
+    text-align: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.achievement-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(108, 60, 233, 0.1);
+    color: #6c3ce9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: 0 auto 12px;
+}
+
+.achievement-icon.gold {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.achievement-icon.emerald {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.achievement-icon.pink {
+    background: rgba(244, 63, 142, 0.1);
+    color: #f43f8e;
+}
+
+.achievement-card h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.achievement-card p {
+    font-size: 0.75rem;
+    color: #6b7290;
+}
+
+/* ---- Settings List ---- */
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.settings-item:hover {
+    background: #252548;
+}
+
+.settings-item-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.settings-item-info > i {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(108, 60, 233, 0.15);
+    color: #6c3ce9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.settings-item-info h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.settings-item-info p {
+    font-size: 0.75rem;
+    color: #6b7290;
+}
+
+.settings-arrow {
+    font-size: 12px;
+    color: #6b7290;
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.settings-item:hover .settings-arrow {
+    transform: translateX(4px);
+    color: #6c3ce9;
+}
+
+.settings-item.danger .settings-item-info > i {
+    background: rgba(244, 63, 94, 0.1);
+    color: #f43f5e;
+}
+
+.settings-item.danger:hover {
+    background: rgba(244, 63, 94, 0.05);
+}
+
+/* --- Tablet screens (1024px and below) --- */
+/* on tablets, profile page becomes single column instead of side-by-side layout */
+@media (max-width: 1024px) {
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Mobile phones (768px and below) --- */
+/* on phones, info and achievements become single column, stats stack vertically */
+@media (max-width: 768px) {
+
+    /* personal info fields go single column on phones */
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* achievement cards go single column on phones */
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* profile stats stack vertically on phones */
+    .profile-stats-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* divider becomes horizontal when stats are stacked */
+    .profile-stat-divider {
+        width: 60%;
+        height: 1px;
+    }
+}

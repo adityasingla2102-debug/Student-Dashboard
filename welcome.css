@@ -1,0 +1,784 @@
+/* ============================================
+   WELCOME.CSS — Full-Screen Welcome + Sign-In
+   EduDash Professional Welcome Page
+   ============================================ */
+
+/* ---- Full-screen welcome wrapper ---- */
+.welcome-page {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1040 25%, #2d1b69 50%, #1a1040 75%, #0f0f1e 100%);
+    background-size: 300% 300%;
+    animation: bgShift 12s ease infinite;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---- Animated background particles / blobs ---- */
+.welcome-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.welcome-bg .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+}
+
+.welcome-bg .orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #6c3ce9 0%, transparent 70%);
+    top: -10%;
+    left: -5%;
+    animation: orbFloat1 10s ease-in-out infinite;
+}
+
+.welcome-bg .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+    bottom: -15%;
+    right: -8%;
+    animation: orbFloat2 12s ease-in-out infinite;
+}
+
+.welcome-bg .orb-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+    top: 40%;
+    right: 20%;
+    animation: orbFloat3 8s ease-in-out infinite;
+}
+
+.welcome-bg .orb-4 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+    top: 20%;
+    left: 50%;
+    animation: orbFloat1 14s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.05); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-50px, -30px) scale(1.1); }
+}
+
+@keyframes orbFloat3 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -40px); }
+}
+
+/* ---- Top Navigation Bar ---- */
+.welcome-nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    animation: fadeInDown 0.8s ease-out both;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.welcome-nav-logo .logo-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #8b5cf6, #6c3ce9);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(108, 60, 233, 0.4);
+}
+
+.welcome-nav-logo .logo-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+.welcome-nav-logo .logo-text span {
+    color: #a78bfa;
+}
+
+.btn-signin-top {
+    padding: 12px 32px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(139, 92, 246, 0.5);
+    background: rgba(108, 60, 233, 0.15);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.02em;
+}
+
+.btn-signin-top:hover {
+    background: rgba(108, 60, 233, 0.35);
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(108, 60, 233, 0.3);
+}
+
+.btn-signin-top:active {
+    transform: scale(0.97);
+}
+
+/* ---- Welcome Hero Content ---- */
+.welcome-hero {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 32px 80px;
+    color: #fff;
+}
+
+.welcome-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    background: rgba(108, 60, 233, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    backdrop-filter: blur(8px);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #c4b5fd;
+    margin-bottom: 28px;
+    animation: fadeInUp 0.7s ease-out 0.2s both;
+}
+
+.welcome-hero-badge i {
+    font-size: 14px;
+    color: #a78bfa;
+}
+
+.welcome-hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.04em;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.welcome-hero h1 .text-highlight {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899, #38bdf8);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: bgShift 4s ease infinite;
+}
+
+.welcome-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.45s both;
+}
+
+.welcome-hero-cta {
+    display: flex;
+    gap: 16px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.btn-get-started {
+    padding: 16px 40px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #6c3ce9, #8b5cf6);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 30px rgba(108, 60, 233, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-get-started::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-get-started:hover::before {
+    left: 100%;
+}
+
+.btn-get-started:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(108, 60, 233, 0.5);
+}
+
+.btn-get-started:active {
+    transform: scale(0.97);
+}
+
+.btn-learn-more {
+    padding: 16px 40px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-learn-more:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Floating stats at the bottom */
+.welcome-stats {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 0 32px 48px;
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.welcome-stat {
+    text-align: center;
+}
+
+.welcome-stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+.welcome-stat-value .accent {
+    color: #a78bfa;
+}
+
+.welcome-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* ============================================
+   SIGN-IN OVERLAY — Slide from Right
+   ============================================ */
+.signin-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+#signin-check:checked ~ .signin-overlay {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* Backdrop */
+.signin-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#signin-check:checked ~ .signin-overlay .signin-backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+/* Sliding panel */
+.signin-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 520px;
+    height: 100%;
+    background: #181830;
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#signin-check:checked ~ .signin-overlay .signin-panel {
+    transform: translateX(0);
+}
+
+/* Panel header */
+.signin-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 36px;
+    border-bottom: 1px solid #252548;
+}
+
+.signin-panel-header h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #f1f1f6;
+    letter-spacing: -0.02em;
+}
+
+.btn-close-signin {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid #252548;
+    background: #1e1e3a;
+    color: #9ca3b8;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.btn-close-signin:hover {
+    background: rgba(244, 63, 94, 0.1);
+    color: #f43f5e;
+    border-color: rgba(244, 63, 94, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Panel body */
+.signin-panel-body {
+    flex: 1;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signin-panel-body .login-subtitle {
+    font-size: 0.88rem;
+    color: #6b7290;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+/* Animated form group with staggered entrance */
+.signin-panel.animated .form-group {
+    animation: slideInRight 0.5s ease-out both;
+}
+
+.signin-panel.animated .form-group:nth-child(1) { animation-delay: 0.15s; }
+.signin-panel.animated .form-group:nth-child(2) { animation-delay: 0.25s; }
+
+.signin-panel.animated .form-options { animation: slideInRight 0.5s ease-out 0.35s both; }
+.signin-panel.animated .btn-login { animation: slideInRight 0.5s ease-out 0.45s both; }
+.signin-panel.animated .login-divider { animation: slideInRight 0.5s ease-out 0.5s both; }
+.signin-panel.animated .social-buttons { animation: slideInRight 0.5s ease-out 0.55s both; }
+.signin-panel.animated .login-footer { animation: slideInRight 0.5s ease-out 0.6s both; }
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Form group */
+.login-form .form-group {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.login-form .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #9ca3b8;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+}
+
+.login-form .form-group input {
+    width: 100%;
+    padding: 14px 48px 14px 16px;
+    border: 1.5px solid #252548;
+    border-radius: 10px;
+    background: #1e1e3a;
+    color: #ecedf2;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.login-form .form-group input::placeholder {
+    color: #6b7290;
+}
+
+.login-form .form-group input:focus {
+    border-color: #6c3ce9;
+    box-shadow: 0 0 0 4px rgba(108, 60, 233, 0.15);
+    background: #1e1e3a;
+}
+
+.login-form .form-group .input-icon {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    color: #6b7290;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.login-form .form-group .input-icon:hover {
+    color: #6c3ce9;
+}
+
+/* Options row */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.form-options .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: #9ca3b8;
+    cursor: pointer;
+}
+
+.form-options .remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #6c3ce9;
+    cursor: pointer;
+}
+
+.form-options .forgot-link {
+    font-size: 0.82rem;
+    color: #6c3ce9;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.form-options .forgot-link:hover {
+    color: #8b5cf6;
+}
+
+/* Sign In button */
+.btn-login {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6c3ce9, #a855f7);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 24px rgba(108, 60, 233, 0.35);
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-login:hover::before {
+    left: 100%;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(108, 60, 233, 0.5);
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+.btn-login .btn-arrow {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all 0.25s ease;
+}
+
+.btn-login:hover .btn-arrow {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(3px);
+}
+
+/* Divider */
+.login-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #252548;
+}
+
+.login-divider span {
+    font-size: 0.78rem;
+    color: #6b7290;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Social buttons */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-social::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.btn-social:hover::after {
+    opacity: 1;
+}
+
+.btn-social:hover {
+    transform: translateY(-2px);
+}
+
+.btn-social:active {
+    transform: scale(0.98);
+}
+
+.btn-social i {
+    font-size: 16px;
+}
+
+.btn-social.google {
+    background: linear-gradient(135deg, #4285f4, #34a0f5);
+    box-shadow: 0 4px 14px rgba(66, 133, 244, 0.3);
+}
+
+.btn-social.github {
+    background: linear-gradient(135deg, #333, #555);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer */
+.login-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: #6b7290;
+}
+
+.login-footer a {
+    color: #6c3ce9;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.login-footer a:hover {
+    color: #8b5cf6;
+}
+
+/* --- Mobile phones (768px and below) --- */
+/* on phones, make welcome page text smaller and buttons stack vertically */
+@media (max-width: 768px) {
+
+    /* less padding on the top nav bar */
+    .welcome-nav {
+        padding: 20px 24px;
+    }
+
+    /* smaller welcome heading on phones */
+    .welcome-hero h1 {
+        font-size: 2.6rem;
+    }
+
+    /* smaller description text */
+    .welcome-hero p {
+        font-size: 1rem;
+    }
+
+    /* buttons stack vertically on phones */
+    .welcome-hero-cta {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* make both buttons full width when stacked */
+    .btn-get-started,
+    .btn-learn-more {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* stats wrap to next line if needed */
+    .welcome-stats {
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+
+    /* sign-in panel takes full screen width on phones */
+    .signin-panel {
+        max-width: 100%;
+    }
+
+    /* less padding in sign-in form on phones */
+    .signin-panel-body {
+        padding: 28px 24px;
+    }
+
+    /* less padding in sign-in header on phones */
+    .signin-panel-header {
+        padding: 20px 24px;
+    }
+}
+
+/* --- Small phones (480px and below) --- */
+/* even smaller sizes for tiny phone screens */
+@media (max-width: 480px) {
+
+    /* even smaller heading on tiny phones */
+    .welcome-hero h1 {
+        font-size: 2rem;
+    }
+
+    /* less gap between stats */
+    .welcome-stats {
+        gap: 20px;
+    }
+
+    /* smaller stat numbers */
+    .welcome-stat-value {
+        font-size: 1.5rem;
+    }
+}
